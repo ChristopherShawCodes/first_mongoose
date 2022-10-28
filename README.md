@@ -10,11 +10,17 @@
 
 
 server - This is your backend server / project folder and will hold all server related files
+
 config - will handle the database configuration and connection
+
 controllers - will hold all logic for each model (i.e creating, updating, etc...)
+
 models - will hold all the schemas
+
 routes - will handle all of our routes for each model
+
 server.js - will handle all the server logic with express
+
 ----------------------------------
 ----------------------------------
 ----------------------------------
@@ -29,6 +35,7 @@ npm install mongoose express
 ----------------------------------
 
 Import/Require Mongoose 
+
 needed in any file that needs access to the Mongoose library
 
 const mongoose = require('mongoose');
@@ -37,10 +44,12 @@ const mongoose = require('mongoose');
 --Connecting MongoDB to Mongoose--
 
 Navigate to Config Folder
+
 Create `mongoose.config.js` file
 
 
 Add Code Snippet To mongoose.config.js File 
+
 `const mongoose = require('mongoose');
  
 mongoose.connect('mongodb://localhost/name_of_your_DB', {
@@ -55,9 +64,11 @@ mongoose.connect('mongodb://localhost/name_of_your_DB', {
 ----Create Mongoose Schema and Model-----
 
 Navigate to Models Folder
+
 Create 'user.model.js' file
 
 Example: User Collection Code Snippet 
+
 `const mongoose = require('mongoose');
  
 const UserSchema = new mongoose.Schema({
@@ -74,17 +85,23 @@ const User = mongoose.model('User', UserSchema);
 module.exports = User;`
 
 
-mongoose.model() method's job is to take a blueprint object and create the necessary database collection out of the model. 
+mongoose.model() method's job is to take a blueprint object and create the necessary database collection out of the model.
+
 We get this blueprint by making a new schema instance from the mongoose.Schema() object constructor
+
 The structure of the object within the schema will determine how each new document put into the collection will be formatted
 
+--------------------------------------------------
+--------------------------------------------------
 
 -----Use Mongoose Models to Create/Retrieve/Update/Destroy-----
 
 Navigate to Controllers folder
+
 Create 'user.controller.js' file 
 
 This will house all of our logic for Creating, Retrieving, Updating and Deleting users 
+
 *Note the require statement imports the User variable that was exported from user.model.js
 
 `const User = require('../models/user.model');
@@ -141,22 +158,30 @@ module.exports.deleteAnExistingUser = (req, res) => {
 
 
 *Key Notes*
+
 User is a constructor function which creates new user objects and talks to the database
+
 .then() executes upon successfully inserting data into the database
+
 .catch() executes only if there is an error 
 
 
 --------------------------------------------------
+--------------------------------------------------
+
 
 -----Routing-----
 
 Navigate to Routes folder
+
 Create user.routes.js file
 
 This file will be responsible for all of the routes dealing with the user model 
 
 *Note*
+
 The REQUIRE statement is importing everything from the Controller file
+
 `const UserController = require('../controllers/user.controller');
  
 module.exports = app => {
@@ -168,6 +193,8 @@ module.exports = app => {
 }`
 
 --------------------------------------------------
+--------------------------------------------------
+
 -----Server-----
 
 Navigate to the Server.JS file 
@@ -187,6 +214,8 @@ app.listen(8000, () => console.log("The server is all fired up on port 8000"));`
 
 
 --------------------------------------------------
+--------------------------------------------------
+
 Run Server
 `nodemon server.js`
 
