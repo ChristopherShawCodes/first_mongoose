@@ -39,7 +39,8 @@ Import/Require Mongoose
 
 needed in any file that needs access to the Mongoose library
 
-const mongoose = require('mongoose');
+`const mongoose = require('mongoose');`
+
 ----------------------------------
 
 --Connecting MongoDB to Mongoose--
@@ -66,7 +67,7 @@ mongoose.connect('mongodb://localhost/name_of_your_DB', {
 
 Navigate to Models Folder
 
-Create 'user.model.js' file
+Create `user.model.js` file
 
 Example: User Collection Code Snippet 
 
@@ -99,7 +100,7 @@ The structure of the object within the schema will determine how each new docume
 
 Navigate to Controllers folder
 
-Create 'user.controller.js' file 
+Create `user.controller.js` file 
 
 This will house all of our logic for Creating, Retrieving, Updating and Deleting users 
 
@@ -175,7 +176,7 @@ User is a constructor function which creates new user objects and talks to the d
 
 Navigate to Routes folder
 
-Create user.routes.js file
+Create `user.routes.js` file
 
 This file will be responsible for all of the routes dealing with the user model 
 
@@ -201,6 +202,7 @@ module.exports = app => {
 Navigate to the Server.JS file 
 
 Add Code Snippet
+
 `const express = require("express");
 const app = express();
     
@@ -218,9 +220,11 @@ app.listen(8000, () => console.log("The server is all fired up on port 8000"));`
 --------------------------------------------------
 
 Run Server
+
 `nodemon server.js`
 
 You may see this error, if so it's not an issue:
+
   DeprecationWarning: Listening to events on the Db class has been deprecated and will be removed in the next major version
 
 --------------------------------------------------
