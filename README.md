@@ -50,15 +50,15 @@ Create `mongoose.config.js` file
 Add Code Snippet To mongoose.config.js File 
 
 
-`const mongoose = require('mongoose');
+`   const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/name_of_your_DB', {
+    mongoose.connect('mongodb://localhost/name_of_your_DB', {
 
     useNewUrlParser: true,
     
     useUnifiedTopology: true
     
-})
+    })
 
     .then(() => console.log('Established a connection to the database'))
     
@@ -75,20 +75,27 @@ Create 'user.model.js' file
 
 Example: User Collection Code Snippet 
 
-`const mongoose = require('mongoose');
+    `const mongoose = require('mongoose');
  
-const UserSchema = new mongoose.Schema({
+    const UserSchema = new mongoose.Schema({
+    
     name: {
+    
         type: String
+        
     },
+    
     age: {
+    
         type: Number
+        
     }
-});
+    
+    });
  
-const User = mongoose.model('User', UserSchema);
+    const User = mongoose.model('User', UserSchema);
  
-module.exports = User;`
+    module.exports = User;`
 
 
 mongoose.model() method's job is to take a blueprint object and create the necessary database collection out of the model. 
