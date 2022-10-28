@@ -81,9 +81,8 @@ Example: User Collection Code Snippet
         type: Number
     }
 });
- 
-const User = mongoose.model('User', UserSchema);
-module.exports = User;`
+ const User = mongoose.model('User', UserSchema);
+   module.exports = User;`
 
 
 mongoose.model() method's job is to take a blueprint object and create the necessary database collection out of the model.
@@ -106,8 +105,7 @@ This will house all of our logic for Creating, Retrieving, Updating and Deleting
 *Note the require statement imports the User variable that was exported from user.model.js
 
 `const User = require('../models/user.model');
- 
-module.exports.findAllUsers = (req, res) => {
+ module.exports.findAllUsers = (req, res) => {
     User.find()
         .then((allDaUsers) => {
             res.json({ users: allDaUsers })
@@ -116,8 +114,7 @@ module.exports.findAllUsers = (req, res) => {
             res.json({ message: 'Something went wrong', error: err })
         });
 }
- 
-module.exports.findOneSingleUser = (req, res) => {
+ module.exports.findOneSingleUser = (req, res) => {
     User.findOne({ _id: req.params.id })
         .then(oneSingleUser => {
             res.json({ user: oneSingleUser })
@@ -125,8 +122,7 @@ module.exports.findOneSingleUser = (req, res) => {
         .catch((err) => {
             res.json({ message: 'Something went wrong', error: err })
         });}
- 
-module.exports.createNewUser = (req, res) => {
+ module.exports.createNewUser = (req, res) => {
     User.create(req.body)
         .then(newlyCreatedUser => {
             res.json({ user: newlyCreatedUser })
@@ -134,8 +130,7 @@ module.exports.createNewUser = (req, res) => {
         .catch((err) => {
             res.json({ message: 'Something went wrong', error: err })
         });}
- 
-module.exports.updateExistingUser = (req, res) => {
+ module.exports.updateExistingUser = (req, res) => {
     User.findOneAndUpdate(
         { _id: req.params.id },
         req.body,
@@ -147,8 +142,7 @@ module.exports.updateExistingUser = (req, res) => {
         .catch((err) => {
             res.json({ message: 'Something went wrong', error: err })
         });}
- 
-module.exports.deleteAnExistingUser = (req, res) => {
+ module.exports.deleteAnExistingUser = (req, res) => {
     User.deleteOne({ _id: req.params.id })
         .then(result => {
             res.json({ result: result })
@@ -184,8 +178,7 @@ This file will be responsible for all of the routes dealing with the user model
 The REQUIRE statement is importing everything from the Controller file
 
 `const UserController = require('../controllers/user.controller');
- 
-module.exports = app => {
+ module.exports = app => {
     app.get('/api/users', UserController.findAllUsers);
     app.get('/api/users/:id', UserController.findOneSingleUser);
     app.put('/api/users/:id', UserController.updateExistingUser);
@@ -204,15 +197,10 @@ Add Code Snippet
 
 `const express = require("express");
 const app = express();
-    
-require("./config/mongoose.config");
-    
-app.use(express.json(), express.urlencoded({ extended: true }));
-    
-const AllMyUserRoutes = require("./routes/user.routes");
-AllMyUserRoutes(app);
-    
-app.listen(8000, () => console.log("The server is all fired up on port 8000"));`
+    require("./config/mongoose.config");
+    app.use(express.json(), express.urlencoded({ extended: true }));
+    const AllMyUserRoutes = require("./routes/user.routes");AllMyUserRoutes(app);
+    app.listen(8000, () => console.log("The server is all fired up on port 8000"));`
 
 
 --------------------------------------------------
