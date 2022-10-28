@@ -29,8 +29,9 @@ server.js - will handle all the server logic with express
 Navigate To Server Folder
 Run Commands:
 
-npm init -y
-npm install mongoose express
+`npm init -y`
+
+`npm install mongoose express`
 
 ----------------------------------
 
