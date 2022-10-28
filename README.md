@@ -254,17 +254,19 @@ Navigate to the Server.JS file
 
 Add Code Snippet
 
-`const express = require("express");
-const app = express();
+    `const express = require("express");
     
-require("./config/mongoose.config");
+    const app = express();
     
-app.use(express.json(), express.urlencoded({ extended: true }));
+    require("./config/mongoose.config");
     
-const AllMyUserRoutes = require("./routes/user.routes");
-AllMyUserRoutes(app);
+    app.use(express.json(), express.urlencoded({ extended: true }));
     
-app.listen(8000, () => console.log("The server is all fired up on port 8000"));`
+    const AllMyUserRoutes = require("./routes/user.routes");
+    
+    AllMyUserRoutes(app);
+    
+    app.listen(8000, () => console.log("The server is all fired up on port 8000"));`
 
 
 --------------------------------------------------
