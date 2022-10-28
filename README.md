@@ -104,19 +104,19 @@ This will house all of our logic for Creating, Retrieving, Updating and Deleting
 
 *Note the require statement imports the User variable that was exported from user.model.js
 
-`const User = require('../models/user.model');
- module.exports.findAllUsers = (req, res) => {
-    User.find()
-        .then((allDaUsers) => {
-            res.json({ users: allDaUsers })
-        })
-        .catch((err) => {
-            res.json({ message: 'Something went wrong', error: err })
-        });
-}
- module.exports.findOneSingleUser = (req, res) => {
-    User.findOne({ _id: req.params.id })
-        .then(oneSingleUser => {
+`const User = require('../models/user.model');`
+ `module.exports.findAllUsers = (req, res) => {`
+   ` User.find()`
+        `.then((allDaUsers) => {`
+           ` res.json({ users: allDaUsers })`
+        `})`
+        `.catch((err) => {`
+            `res.json({ message: 'Something went wrong', error: err })`
+        `});`
+`}
+ module.exports.findOneSingleUser = (req, res) => {`
+    `User.findOne({ _id: req.params.id })`
+        `.then(oneSingleUser => {`
             res.json({ user: oneSingleUser })
         })
         .catch((err) => {
