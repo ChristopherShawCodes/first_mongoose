@@ -53,13 +53,14 @@ Create `mongoose.config.js` file
 Add Code Snippet To mongoose.config.js File 
 
 `const mongoose = require('mongoose');
- 
 mongoose.connect('mongodb://localhost/name_of_your_DB', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
     .then(() => console.log('Established a connection to the database'))
     .catch(err => console.log('Something went wrong when connecting to the database ', err));`
+    
+    
 ----------------------------------
 ----------------------------------
 
@@ -71,9 +72,8 @@ Create `user.model.js` file
 
 Example: User Collection Code Snippet 
 
-`const mongoose = require('mongoose');
- 
-const UserSchema = new mongoose.Schema({
+ `const mongoose = require('mongoose');
+    const UserSchema = new mongoose.Schema({
     name: {
         type: String
     },
@@ -83,7 +83,6 @@ const UserSchema = new mongoose.Schema({
 });
  
 const User = mongoose.model('User', UserSchema);
- 
 module.exports = User;`
 
 
