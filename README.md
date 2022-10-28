@@ -50,7 +50,7 @@ Create `mongoose.config.js` file
 Add Code Snippet To mongoose.config.js File 
 
 
-`   const mongoose = require('mongoose');
+    `const mongoose = require('mongoose');
 
     mongoose.connect('mongodb://localhost/name_of_your_DB', {
 
@@ -115,56 +115,96 @@ This will house all of our logic for Creating, Retrieving, Updating and Deleting
 
 *Note the require statement imports the User variable that was exported from user.model.js
 
-`const User = require('../models/user.model');
+    `const User = require('../models/user.model');
  
-module.exports.findAllUsers = (req, res) => {
+    module.exports.findAllUsers = (req, res) => {
+    
     User.find()
+    
         .then((allDaUsers) => {
+        
             res.json({ users: allDaUsers })
+            
         })
+        
         .catch((err) => {
+        
             res.json({ message: 'Something went wrong', error: err })
+            
         });
-}
+        
+    }
  
-module.exports.findOneSingleUser = (req, res) => {
+    module.exports.findOneSingleUser = (req, res) => {
+    
     User.findOne({ _id: req.params.id })
+    
         .then(oneSingleUser => {
+        
             res.json({ user: oneSingleUser })
+            
         })
+        
         .catch((err) => {
+        
             res.json({ message: 'Something went wrong', error: err })
+            
         });}
  
-module.exports.createNewUser = (req, res) => {
+    module.exports.createNewUser = (req, res) => {
+    
     User.create(req.body)
+    
         .then(newlyCreatedUser => {
+        
             res.json({ user: newlyCreatedUser })
+            
         })
+        
         .catch((err) => {
+        
             res.json({ message: 'Something went wrong', error: err })
+            
         });}
  
-module.exports.updateExistingUser = (req, res) => {
+    module.exports.updateExistingUser = (req, res) => {
+    
     User.findOneAndUpdate(
+    
         { _id: req.params.id },
+        
         req.body,
+        
         { new: true, runValidators: true }
+        
     )
         .then(updatedUser => {
+       
             res.json({ user: updatedUser })
+            
         })
+        
         .catch((err) => {
+        
             res.json({ message: 'Something went wrong', error: err })
+            
         });}
  
-module.exports.deleteAnExistingUser = (req, res) => {
+    module.exports.deleteAnExistingUser = (req, res) => {
+    
     User.deleteOne({ _id: req.params.id })
+    
         .then(result => {
+        
             res.json({ result: result })
+            
         })
+        
+       
         .catch((err) => {
+        
             res.json({ message: 'Something went wrong', error: err })
+            
         });}`
 
 
@@ -191,15 +231,21 @@ This file will be responsible for all of the routes dealing with the user model
 
 The REQUIRE statement is importing everything from the Controller file
 
-`const UserController = require('../controllers/user.controller');
+    `const UserController = require('../controllers/user.controller');
  
-module.exports = app => {
+    module.exports = app => {
+    
     app.get('/api/users', UserController.findAllUsers);
+    
     app.get('/api/users/:id', UserController.findOneSingleUser);
+    
     app.put('/api/users/:id', UserController.updateExistingUser);
+    
     app.post('/api/users', UserController.createNewUser);
+    
     app.delete('/api/users/:id', UserController.deleteAnExistingUser);
-}`
+    
+    }`
 
 --------------------------------------------------
 -----Server-----
