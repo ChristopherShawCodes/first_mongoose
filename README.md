@@ -27,9 +27,9 @@ Navigate To Server Folder
 
 Run Commands:
 
-npm init -y
+`npm init -y`
 
-npm install mongoose express
+`npm install mongoose express`
 
 ----------------------------------
 
@@ -37,7 +37,7 @@ Import/Require Mongoose
 
 needed in any file that needs access to the Mongoose library
 
-const mongoose = require('mongoose');
+`const mongoose = require('mongoose');`
 ----------------------------------
 
 --Connecting MongoDB to Mongoose--
